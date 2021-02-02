@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <package >
+  <configuration>
+    <packageSources>
+      <clear />
+      <add key="nuget.org" value="https://msazure.pkgs.visualstudio.com/_packaging/ManualMirror/nuget/v3/index.json" />
+    </packageSources>
+    <disabledPackageSources>
+      <clear />
+    </disabledPackageSources>
+  </configuration>
   <metadata>
     <id>ServiceFabric.Explorer</id>
     <version>1.0</version>
