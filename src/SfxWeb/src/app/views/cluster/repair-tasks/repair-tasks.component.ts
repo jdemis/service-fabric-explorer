@@ -8,11 +8,12 @@ import { SettingsService } from 'src/app/services/settings.service';
 import { RepairTaskViewComponent } from '../repair-task-view/repair-task-view.component';
 import { RepairTask } from 'src/app/Models/DataModels/repairTask';
 import { ITimelineData, EventStoreUtils } from 'src/app/Models/eventstore/timelineGenerators';
-import { DataSet, DataGroup, DataItem } from 'vis-timeline';
+import { DataItem, DataGroup } from 'vis-timeline/esnext';
 import { RepairTaskCollection } from 'src/app/Models/DataModels/collections/RepairTaskCollection';
 import { map } from 'rxjs/operators';
 import { Counter, ICounterMostCommonEntry } from 'src/app/Utils/Utils';
 import { ISortOrdering } from 'src/app/modules/detail-list-templates/detail-list/detail-list.component';
+import { DataSet } from 'vis-data';
 
 interface ITileListItem {
   primaryText: string;

@@ -1,7 +1,8 @@
 
 
 import { FabricEventBase, ClusterEvent, NodeEvent, ApplicationEvent, FabricEvent } from './Events';
-import { DataGroup, DataItem, DataSet } from 'vis-timeline/standalone/esm';
+import { DataGroup, DataItem } from 'vis-timeline/esnext';
+import { DataSet } from 'vis-data'
 import padStart from 'lodash/padStart';
 import findIndex from 'lodash/findIndex';
 import { HtmlUtils } from 'src/app/Utils/HtmlUtils';
