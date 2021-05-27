@@ -44,6 +44,7 @@
     "metro4": "^4.3.5",
     "moment": "^2.29.1",
     "nouislider": "^14.6.0",
+    "office-ui-fabric-core": "^11.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "vis-data": "^6.4.1",

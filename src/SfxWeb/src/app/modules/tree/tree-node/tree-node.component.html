@@ -10,7 +10,7 @@
         [ngClass]="{'disabled': node.listSettings && node.listSettings.currentPage === 1}" >
         <div style="padding-left: 54px;">
             <span  [ngStyle]="{ 'paddingLeft': node.paddingLeftPx }"></span>
-            <div (click)="node.pageUp()" class=" expander icon mif-chevron-thin-up link" [title]="'Previous ' + node.listSettings.limit + ' items'" aria-hidden="true"></div>
+            <div (click)="node.pageUp()" class=" expander icon ms-Icon ms-Icon--ChevronUp link" [title]="'Previous ' + node.listSettings.limit + ' items'" aria-hidden="true"></div>
             <div (click)="node.pageFirst()" style="padding-left: 10px;" class="expander icon mif-vertical-align-top link" [title]="'First ' + node.listSettings.limit + ' items'" aria-hidden="true"></div>
         </div>
     </li>
@@ -19,14 +19,14 @@
              [attr.aria-label]="child.displayName()">
             <span  [ngStyle]="{ 'paddingLeft': child.paddingLeftPx }"></span>
             <div class="expander" *ngIf="!child.hasExpander"></div>
-            <button tabindex="0" class="expander icon " aria-hidden="false" role="button"
+            <button tabindex="0" class="expander icon ms-Icon" aria-hidden="false" role="button"
                     (click)="child.toggle(); $event.stopPropagation()" *ngIf="child.hasExpander"
-                    [ngClass]="{ 'mif-chevron-thin-right': child.isCollapsed, 'mif-chevron-thin-down': child.isExpanded }"
+                    [ngClass]="{ 'ms-Icon--ChevronUp': child.isCollapsed, 'ms-Icon--ChevronDown': child.isExpanded }"
                     style="display: inline-block;" [title]="child.isCollapsed ? 'Expand Children' : 'Collapse Children'">
             </button>
-            <button tabindex="0" class="icon" aria-hidden="false" *ngIf="child.node.canExpandAll && child.hasExpander"
+            <button tabindex="0" class="icon ms-Icon" aria-hidden="false" *ngIf="child.node.canExpandAll && child.hasExpander"
             (click)="child.isExpanded? child.closeAll() : child.toggleAll(); $event.stopPropagation()"
-            [ngClass]="{ 'mif-unfold-less': child.isCollapsed, 'mif-unfold-more': child.isExpanded }"
+            [ngClass]="{ 'ms-Icon--ChevronFold10': child.isCollapsed, 'ms-Icon-ChevronUnfold10': child.isExpanded }"
             [title]="child.isCollapsed ? 'Expand All' : 'Collapse All'" style="font-size: large; padding: 0px;"></button>
 
             <span *ngIf="child.badge && child.badge()?.badgeClass && child.badge()?.badgeClass !== 'badge-ok'" style="margin-right: 3px;">
