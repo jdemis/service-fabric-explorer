@@ -147,12 +147,15 @@ export class ClusterManifest extends DataModelBase<IRawClusterManifest> {
         }
     }
 
-    protected updateInternal(): Observable<any> | void {
+    private getClusterManifestDomElement(): Element {
         const parser = new DOMParser();
         const xml = parser.parseFromString(this.raw.Manifest, 'text/xml');
 
-        // let $xml = $($.parseXML(this.raw.Manifest));
-        const manifest = xml.getElementsByTagName('ClusterManifest')[0];
+        return xml.getElementsByTagName('ClusterManifest')[0];
+    }
+
+    protected updateInternal(): Observable<any> | void {
+        const manifest = this.getClusterManifestDomElement();
         this.clusterManifestName = manifest.getAttribute('Name');
 
         const FabricSettings = manifest.getElementsByTagName('FabricSettings')[0];
@@ -171,6 +174,25 @@ export class ClusterManifest extends DataModelBase<IRawClusterManifest> {
             }else if (item.getAttribute('Name') === 'EventStoreService'){
                 this.isEventStoreEnabled = true;
             }
+        }
+    }
+
+    public getNodeTypeInformation(nodeType: string) {
+        const manifest = this.getClusterManifestDomElement();
+
+        const nodeTypes = manifest.getElementsByTagName('NodeTypes');
+
+        let nodeTypeElement: Element = null;
+        for (let i = 0; i < nodeTypes.length; i ++) {
+            const item = nodeTypes.item(i);
+            if (item.getAttribute('Name') === nodeType){
+                nodeTypeElement = item;
+            }
+        }
+
+        
+        if(nodeTypeElement) {
+            nodeTypeElement.getElementsByTagName('PlacementProperties')[0].getAttribute('')
         }
     }
 }
