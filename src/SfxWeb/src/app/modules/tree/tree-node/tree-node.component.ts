@@ -17,4 +17,8 @@ export class TreeNodeComponent {
   trackById(index: number, node: TreeNodeGroupViewModel) {
     return node.nodeId;
   }
+
+  toggleExpand(child: TreeNodeGroupViewModel) {
+    child.isExpanded? child.closeAll() : child.toggleAll();
+  }
 }

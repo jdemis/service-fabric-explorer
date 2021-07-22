@@ -26,7 +26,12 @@ export class TreeNodeGroupViewModel implements ITreeNode {
     }
 
     public get displayedChildren(): TreeNodeGroupViewModel[] {
-        let result = this.children.filter(node => node.isVisibleByBadge);
+        let result = [];
+        if(this.tree.searchTerm.length > 0) {
+            result = this.children.filter(node => node.displayName().includes(this.tree.searchTerm));
+        }
+
+        result = this.children.filter(node => node.isVisibleByBadge);
 
         if (this.node && this.node.listSettings) {
             this.node.listSettings.count = result.length;

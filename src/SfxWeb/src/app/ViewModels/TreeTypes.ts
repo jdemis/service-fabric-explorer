@@ -25,6 +25,7 @@ export interface ITreeNode {
     // If current node is expanded, merge the health chunk data back to the data models for current node and its children.
     mergeClusterHealthStateChunk?: (clusterHealthChunk: IClusterHealthChunk) => Observable<any>;
     canExpandAll?: boolean;
+    searchableExpandable?: boolean;
 }
 
 
