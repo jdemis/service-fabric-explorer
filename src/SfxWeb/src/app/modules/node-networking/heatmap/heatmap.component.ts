@@ -60,7 +60,7 @@ export class HeatmapComponent implements OnInit {
     colorAxis: {
       stops: [
           [0, '#7fba00'],
-          [0.5, '#fffbbc'],
+          [0.5, '#808080'],
           [0.9, '#c4463a'],
           [1, '#c4463a']
       ],
@@ -74,7 +74,7 @@ export class HeatmapComponent implements OnInit {
   tooltip: {
     headerFormat: 'Latency<br/>',
     formatter() {
-      console.log(this)
+      // console.log(this)
       return `${new Date(this.point.options.x).toLocaleTimeString()}  <b>${this.point.options.value} MS </b>`;
     }
     // pointFormat: '{new Date(point.x).toLocaleDateString()} {point.y} <b>{point.value} MS </b>'
@@ -120,7 +120,7 @@ export class HeatmapComponent implements OnInit {
   }
 
   generateData () {
-    const nodes = 5;
+    const nodes = 10;
     let data = [];
     let date = new Date();
     for(let x = 0; x <= 10; x++) {
