@@ -36,6 +36,10 @@ export class BaseComponent implements OnInit {
     {
       name: 'manifest',
       route: '/manifest'
+    },
+    {
+      name: 'networking',
+      route: '/nodenetworking'
     }
   ];
   constructor(public tree: TreeService, public dataService: DataService) { }
