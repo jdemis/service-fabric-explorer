@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Chart, Options, chart  } from 'highcharts';
 
 @Component({
@@ -6,7 +6,7 @@ import { Chart, Options, chart  } from 'highcharts';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements OnInit, OnChanges {
+export class BarChartComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   @Input() xAxisCategories: string[];
   @Input() dataSet: any[] = [];
@@ -14,6 +14,7 @@ export class BarChartComponent implements OnInit, OnChanges {
   @Input() subtitle = '';
 
   private chart: Chart;
+  @ViewChild('container', { static: true }) domElement: ElementRef;
 
   fontColor = {
                 color: '#fff'
@@ -25,7 +26,7 @@ export class BarChartComponent implements OnInit, OnChanges {
       inverted: false,
       polar: false,
       animation: true,
-      backgroundColor: '#191919'
+      backgroundColor: null
     },
     title: {
       text: '',
@@ -83,7 +84,27 @@ export class BarChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.chart = chart('container', this.options);
+    this.chart = chart(this.domElement.nativeElement, this.options);
+    console.log(this)
+    if (this.chart){
+      this.chart.series[0].setData(this.dataSet);
+      this.chart.title.update({text: this.title});
+      this.chart.subtitle.update({text: this.subtitle});
+      this.chart.xAxis[0].update({categories: this.xAxisCategories});
+    }
   }
 
+  ngAfterViewInit() {
+    if (this.chart){
+      this.chart.series[0].setData(this.dataSet);
+      this.chart.title.update({text: this.title});
+      this.chart.subtitle.update({text: this.subtitle});
+      this.chart.xAxis[0].update({categories: this.xAxisCategories});
+    }
+  }
+
+  ngOnDestroy() {
+    this.chart.destroy();
+    console.log("test")
+  }
 }

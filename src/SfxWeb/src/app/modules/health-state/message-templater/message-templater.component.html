@@ -1,0 +1,13 @@
+<div style="display: inline-block;" >
+  <app-clip-board [text]="value" style="display: inline-block;"></app-clip-board>
+  <div>
+      <p style="white-space: pre-wrap; display: inline-block;" [innerHtml]="value">
+
+      </p>
+  </div>
+</div>
+
+<div *ngIf="showGraph" style="height: 200px; display: inline-block;">
+  <app-bar-chart *ngIf="showGraph" style="height: 200px;" [xAxisCategories]="categories"
+  [dataSet]="graphData"></app-bar-chart>
+</div>

@@ -9,6 +9,7 @@ import { MetricsViewModel } from '../ViewModels/MetricsViewModel';
 import { StorageService } from './storage.service';
 import { RepairTaskViewComponent } from '../views/cluster/repair-task-view/repair-task-view.component';
 import { QuestionToolTipComponent } from '../modules/detail-list-templates/question-tool-tip/question-tool-tip.component';
+import { MessageTemplaterComponent } from '../modules/health-state/message-templater/message-templater.component';
 
 @Injectable({
   providedIn: 'root'
@@ -81,7 +82,7 @@ export class SettingsService {
           [
               new ListColumnSettingForLink('kind', 'Kind', (item) =>  item.viewPath),
               new ListColumnSettingForBadge('healthState', 'Health State'),
-              new ListColumnSettingWithCopyText('description', 'Description'),
+              new ListColumnSettingWithCustomComponent(MessageTemplaterComponent, 'description', 'Description'),
               new ListColumnSettingWithUtcTime('sourceTimeStamp', 'Source UTC'),
           ]);
   }
