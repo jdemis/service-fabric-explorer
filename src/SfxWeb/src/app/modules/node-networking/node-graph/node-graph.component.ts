@@ -36,7 +36,7 @@ export class NodeGraphComponent  implements OnInit, OnChanges {
         layoutAlgorithm: {
             // enableSimulation: true,
             integration: 'euler',
-            linkLength: 100
+            linkLength: 50
         },
         keys: ['from', 'to'],
         marker: {
@@ -75,7 +75,7 @@ export class NodeGraphComponent  implements OnInit, OnChanges {
 
     for(let i = 0; i < nodes; i++) {
       for(let j = i; j < nodes; j++) {
-        if(Math.random() < .1) {
+        if(Math.random() < .5) {
           data.push([i.toString(), j.toString()])
         }
       }
