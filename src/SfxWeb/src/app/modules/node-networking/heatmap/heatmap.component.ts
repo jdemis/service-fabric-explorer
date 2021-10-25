@@ -86,7 +86,7 @@ export class HeatmapComponent implements OnInit {
         enabled: true,
         color: '#000000'
       }
-    }]
+    } as any]
   };
   constructor() {
     const l = Date.UTC(2017, 0, 1)

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Chart, Options, chart  } from 'highcharts';
 import * as Highcharts from "highcharts";
-import * as HighchartsNetworkgraph from "highcharts/modules/networkgraph";
 
-HighchartsNetworkgraph(Highcharts);
+var vbp = require('highcharts/modules/networkgraph');
+vbp(Highcharts);
+
 import { TimeUtils } from 'src/app/Utils/TimeUtils';
 
 @Component({
@@ -29,6 +30,8 @@ export class NodeGraphComponent  implements OnInit, OnChanges {
     chart: {
       type: 'networkgraph',
       height: '50%',
+      backgroundColor: null,
+      borderColor: 'lightblue'
 
   },
   plotOptions: {
@@ -49,7 +52,7 @@ export class NodeGraphComponent  implements OnInit, OnChanges {
       {
         nodes: this.generateNodes(),
         data: this.generateData()
-      }]
+      } as any]
   }
 
 
