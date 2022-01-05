@@ -1,0 +1,35 @@
+@import "src/vars.scss";
+
+
+.command-name {
+  padding: 5px;
+  white-space: nowrap;
+  color: $detail-pane-sub-title-color;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.command-desc {
+  padding: 10px 5px;
+}
+
+.command-text {
+  padding: 10px;
+  background-color: $right-panel-background-color;
+  border-radius: 10px;
+  width: 100%;
+}
+
+
+.styled-input {
+  padding: 3px 6px;
+  border: $input-border-color 1px solid;
+  background-color: transparent;
+  color: $detail-pane-sub-title-color;
+
+  option {
+    background-color: $right-panel-background-color;
+    padding: 2px;
+    border-bottom: 1px solid $input-border-color;
+  }
+}

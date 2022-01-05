@@ -1,0 +1,24 @@
+<div class="essen-pane detail-pane">
+  <h2 class="command-name">
+    {{command.name}}
+  </h2>
+  <div class="command-desc">
+    {{command.description}}
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <div *ngFor="let input of command.inputs">
+      <label>{{input.displayName}}
+        <input type="text" *ngIf="!input.options" class="styled-input" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()">
+        <select *ngIf="input.options" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()" class="styled-input">
+          <option *ngFor="let option of input.options" [value]="option">{{option}}</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <div class="command-text">
+    {{commandText}}
+    <app-clip-board [text]="commandText"></app-clip-board>
+  </div>
+</div>
