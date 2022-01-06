@@ -12,10 +12,12 @@ import { EventStoreModule } from 'src/app/modules/event-store/event-store.module
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'src/app/modules/charts/charts.module';
 import { HealthStateModule } from 'src/app/modules/health-state/health-state.module';
+import { CommandComponent } from './command/command.component';
+import { PsCommandsModule } from 'src/app/modules/ps-commands/ps-commands.module';
 
 
 @NgModule({
-  declarations: [BaseComponent, DetailsComponent, EssentialsComponent, EventsComponent],
+  declarations: [BaseComponent, DetailsComponent, EssentialsComponent, EventsComponent, CommandComponent],
   imports: [
     CommonModule,
     ReplicaRoutingModule,
@@ -24,7 +26,8 @@ import { HealthStateModule } from 'src/app/modules/health-state/health-state.mod
     EventStoreModule,
     NgbTooltipModule,
     ChartsModule,
-    HealthStateModule
+    HealthStateModule,
+    PsCommandsModule
   ]
 })
 export class ReplicaModule { }

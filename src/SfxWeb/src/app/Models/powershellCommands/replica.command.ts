@@ -1,6 +1,6 @@
 import { Node } from "../DataModels/Node";
 import { ReplicaOnPartition } from "../DataModels/Replica";
-import { CommandHandler } from "./command";
+import { CommandHandler, healthReportCommand } from "./command";
 
 export class ReplicaCommandHandler extends CommandHandler {
   constructor(private replica: ReplicaOnPartition) {
@@ -32,6 +32,9 @@ export class ReplicaCommandHandler extends CommandHandler {
         command: `Get-ServiceFabricDeployedReplicaDetail -NodeName "${replica.raw.NodeName}" -PartitionId ${replica.parent.id} -ReplicaOrInstanceId ${replica.id}`,
         description: 'Gets information about Service Fabric replicas from a host process. To also get Replicator information include the -ReplicatorDetail flag'
       },
+      healthReportCommand("Send-ServiceFabricReplicaHealthReport",
+      "Sends a health report on a Service Fabric replica.",
+      `Send-ServiceFabricReplicaHealthReport -PartitionId ${replica.parent.id} ${this.replica.isStatefulService ? '-ReplicaId' : '-InstanceId'} ${replica.id}`)
     ]
   }
 }

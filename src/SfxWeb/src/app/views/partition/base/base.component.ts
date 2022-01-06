@@ -23,10 +23,7 @@ export class BaseComponent extends PartitionBaseControllerDirective {
       name: 'details',
       route: './details'
     },
-    {
-      name: 'commands',
-      route: './commands'
-    }
+    Constants.commandsTab
   ];
 
   constructor(protected dataService: DataService, injector: Injector, private tree: TreeService) {

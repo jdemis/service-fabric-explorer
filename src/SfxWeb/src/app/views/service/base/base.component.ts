@@ -25,9 +25,10 @@ export class BaseComponent extends ServiceBaseControllerDirective {
       route: './details'
     },
     {
-      name: 'events',
-      route: './events'
-    }
+      name: 'commands',
+      route: './commands'
+    },
+    Constants.commandsTab
   ];
   constructor(protected dataService: DataService, injector: Injector, private tree: TreeService) {
     super(dataService, injector);

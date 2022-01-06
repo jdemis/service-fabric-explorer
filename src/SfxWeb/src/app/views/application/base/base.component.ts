@@ -28,7 +28,8 @@ export class BaseComponent extends ApplicationBaseControllerDirective {
   {
     name: 'manifest',
     route: './manifest'
-  }
+  },
+  Constants.commandsTab
   ];
 
   constructor(protected data: DataService, injector: Injector, private tree: TreeService) {

@@ -2,16 +2,16 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { IResponseMessageHandler } from 'src/app/Common/ResponseMessageHandlers';
 import { CommandHandler } from 'src/app/Models/powershellCommands/command';
-import { NodeCommands } from 'src/app/Models/powershellCommands/node.command';
+import { ReplicaCommandHandler } from 'src/app/Models/powershellCommands/replica.command';
 import { DataService } from 'src/app/services/data.service';
-import { NodeBaseControllerDirective } from '../NodeBase';
+import { ReplicaBaseControllerDirective } from '../ReplicaBase';
 
 @Component({
-  selector: 'app-commands',
-  templateUrl: './commands.component.html',
-  styleUrls: ['./commands.component.scss']
+  selector: 'app-command',
+  templateUrl: './command.component.html',
+  styleUrls: ['./command.component.scss']
 })
-export class CommandsComponent extends NodeBaseControllerDirective {
+export class CommandComponent extends ReplicaBaseControllerDirective {
 
   commandHandler: CommandHandler;
 
@@ -20,9 +20,8 @@ export class CommandsComponent extends NodeBaseControllerDirective {
   }
 
   refresh(messageHandler?: IResponseMessageHandler){
-    this.commandHandler = new NodeCommands(this.node);
+    this.commandHandler = new ReplicaCommandHandler(this.replica);
 
     return of(null);
   }
 }
-

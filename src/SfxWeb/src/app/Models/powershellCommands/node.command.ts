@@ -1,5 +1,5 @@
 import { Node } from "../DataModels/Node";
-import { CommandHandler } from "./command";
+import { CommandHandler, healthReportCommand } from "./command";
 
 export class NodeCommands extends CommandHandler {
   constructor(private node: Node) {
@@ -26,30 +26,9 @@ export class NodeCommands extends CommandHandler {
         command: `Disable-ServiceFabricNode -NodeName "${this.node.name}" -Intent Restart `,
         description: 'Disables a Service Fabric node.'
       },
-      {
-        name: 'Send-ServiceFabricPartitionHealthReport',
-        command: `Send-ServiceFabricPartitionHealthReport -NodeName "${this.node.name}"  -HealthState <HealthState> -SourceId <SourceId> -HealthProperty <hp> `,
-        description: 'Disables a Service Fabric node.',
-        inputs: [
-          {
-            displayName: 'Health State',
-            replaceText: "<HealthState>"
-          },
-          {
-            displayName: 'Source Id',
-            replaceText: "<SourceId>"
-          },
-          {
-            displayName: 'Health Property',
-            replaceText: "<hp>",
-            options: [
-              "Error",
-              "Warning",
-              "Ok"
-            ]
-          }
-        ],
-      },
+      healthReportCommand('Send-ServiceFabricPartitionHealthReport',
+        'Send a Service Fabric node Health Report.',
+        `Send-ServiceFabricPartitionHealthReport -NodeName "${this.node.name}"`)
     ]
   }
 }

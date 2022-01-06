@@ -19,12 +19,16 @@ export class PsCommandComponent implements OnChanges {
 
   ngOnChanges(): void {
     if(this.command.inputs) {
-      let newMap = this.command.inputs.reduce( (map, input) => {map[input.displayName] = " "; return map}, {});
+      let newMap = this.getInputMap();
       this.inputValues = {...newMap, ...this.inputValues};
       this.updateText();
     }else{
       this.commandText = this.command.command;
     }
+  }
+
+  getInputMap() {
+    return this.command.inputs.reduce( (map, input) => {map[input.displayName] = " "; return map}, {});
   }
 
   updateText() {
@@ -35,6 +39,11 @@ export class PsCommandComponent implements OnChanges {
     });
 
     this.commandText = newCommandText;
+  }
+
+  reset() {
+    this.inputValues =  this.getInputMap();
+    this.updateText();
   }
 
 }

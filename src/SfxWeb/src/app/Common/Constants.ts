@@ -77,6 +77,11 @@ export class Constants {
       name: 'events',
       route: './events'
     };
+
+    public static readonly commandsTab: ITab = {
+      name: 'commands',
+      route: './commands'
+    };
 }
 
 export class FabricEnumValues {

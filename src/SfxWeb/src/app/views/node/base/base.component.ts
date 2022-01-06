@@ -21,10 +21,7 @@ export class BaseComponent extends NodeBaseControllerDirective {
     name: 'details',
     route: './details'
   },
-  {
-    name: 'commands',
-    route: './commands'
-  }
+  Constants.commandsTab
   ];
 
   constructor(protected data: DataService, injector: Injector, private tree: TreeService) {

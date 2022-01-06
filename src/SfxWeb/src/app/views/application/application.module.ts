@@ -19,9 +19,11 @@ import { ActionRowComponent } from './action-row/action-row.component';
 import { BackupComponent } from './backup/backup.component';
 import { ChartsModule } from 'src/app/modules/charts/charts.module';
 import { HealthStateModule } from 'src/app/modules/health-state/health-state.module';
+import { CommandsComponent } from './commands/commands.component';
+import { PsCommandsModule } from 'src/app/modules/ps-commands/ps-commands.module';
 
 @NgModule({
-  declarations: [BaseComponent, EssentialsComponent, DetailsComponent, DeploymentsComponent, ManifestComponent, EventsComponent, CreateServiceComponent, ActionRowComponent, BackupComponent],
+  declarations: [BaseComponent, EssentialsComponent, DetailsComponent, DeploymentsComponent, ManifestComponent, EventsComponent, CreateServiceComponent, ActionRowComponent, BackupComponent, CommandsComponent],
   imports: [
     CommonModule,
     ApplicationRoutingModule,
@@ -34,7 +36,8 @@ import { HealthStateModule } from 'src/app/modules/health-state/health-state.mod
     NgbButtonsModule,
     UpgradeProgressModule,
     ChartsModule,
-    HealthStateModule
+    HealthStateModule,
+    PsCommandsModule
   ]
 })
 export class ApplicationModule { }

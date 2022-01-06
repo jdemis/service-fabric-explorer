@@ -1,21 +1,31 @@
 <div class="essen-pane detail-pane">
   <h2 class="command-name">
     {{command.name}}
+    <a class="mif-link link-out" *ngIf="command.link" [href]="command.link" target="_blank"></a>
   </h2>
   <div class="command-desc">
     {{command.description}}
-  </div>
 
-  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <div *ngFor="let input of command.inputs">
-      <label>{{input.displayName}}
-        <input type="text" *ngIf="!input.options" class="styled-input" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()">
-        <select *ngIf="input.options" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()" class="styled-input">
-          <option *ngFor="let option of input.options" [value]="option">{{option}}</option>
-        </select>
-      </label>
+    <div *ngIf="command.inputs">
+      <h3 class="underline">
+        Parameters
+      </h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;" >
+        <div *ngFor="let input of command.inputs">
+          <label>{{input.displayName}}
+            <input type="text" *ngIf="!input.options" class="styled-input" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()">
+            <select *ngIf="input.options" [(ngModel)]="inputValues[input.displayName]"  (ngModelChange)="updateText()" class="styled-input">
+              <option *ngFor="let option of input.options" [value]="option">{{option}}</option>
+            </select>
+          </label>
+        </div>
+        <button class="flat-button" style="margin-left: auto;" (click)="reset();">
+          Reset
+        </button>
+      </div>
     </div>
   </div>
+
 
   <div class="command-text">
     {{commandText}}

@@ -20,7 +20,8 @@ export class BaseComponent extends ReplicaBaseControllerDirective {
     {
       name: 'details',
       route: './details'
-    }
+    },
+    Constants.commandsTab
   ];
 
   constructor(protected dataService: DataService, injector: Injector, private tree: TreeService) {
