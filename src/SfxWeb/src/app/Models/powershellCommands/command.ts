@@ -1,7 +1,15 @@
+export enum CommandSafety {
+  Safe = "Safe",
+  Warning = "Potential Harm",
+  Danger = "Dangerous"
+}
+
 export interface ICommandInput {
   replaceText: string;
   displayName: string;
   options?: string[];
+  safety?: CommandSafety;
+  adminRequired?: boolean;
 }
 
 export interface ICommand {
@@ -24,16 +32,16 @@ export const healthReportCommand = (name: string, description: string, prefix: s
     description,
     inputs: [
       {
-        displayName: 'Health State',
-        replaceText: "<HealthState>"
+        displayName: 'Health Property',
+        replaceText: "<hp>"
       },
       {
         displayName: 'Source Id',
         replaceText: "<SourceId>"
       },
       {
-        displayName: 'Health Property',
-        replaceText: "<hp>",
+        displayName: 'Health State',
+        replaceText: "<HealthState>",
         options: [
           "Error",
           "Warning",
