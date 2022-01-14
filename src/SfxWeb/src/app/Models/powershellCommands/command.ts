@@ -8,8 +8,6 @@ export interface ICommandInput {
   replaceText: string;
   displayName: string;
   options?: string[];
-  safety?: CommandSafety;
-  adminRequired?: boolean;
 }
 
 export interface ICommand {
@@ -18,6 +16,8 @@ export interface ICommand {
   description: string;
   inputs?: ICommandInput[];
   link?: string;
+  safety?: CommandSafety;
+  adminRequired?: boolean;
 }
 
 export class CommandHandler {
@@ -30,6 +30,8 @@ export const healthReportCommand = (name: string, description: string, prefix: s
     name,
     command: `${prefix} -HealthState <HealthState> -SourceId <SourceId> -HealthProperty <hp> `,
     description,
+    adminRequired: true,
+    safety: CommandSafety.Warning,
     inputs: [
       {
         displayName: 'Health Property',

@@ -3,6 +3,16 @@
     {{command.name}}
     <a class="mif-link link-out" *ngIf="command.link" [href]="command.link" target="_blank"></a>
   </h2>
+  <div class="text-icon-wrapper">
+    <div *ngIf="safetyIcon" class="text-icon-wrapper">
+      <span [ngClass]="safetyIcon" class="larger-icon"></span>
+      <span>{{command.safety}}</span>
+    </div>
+    <span *ngIf="command.adminRequired" class="text-icon-wrapper">
+      <span class="mif-user larger-icon"></span>
+      <span style="font-size: 13px;">Admin Permission required</span>
+    </span>
+  </div>
   <div class="command-desc">
     {{command.description}}
 

@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { ICommand, ICommandInput } from 'src/app/Models/powershellCommands/command';
+import { Component, Input, OnChanges } from '@angular/core';
+import { CommandSafety, ICommand } from 'src/app/Models/powershellCommands/command';
 
 @Component({
   selector: 'app-ps-command',
@@ -11,6 +11,7 @@ export class PsCommandComponent implements OnChanges {
   @Input() command: ICommand;
 
   commandText: string = "";
+  safetyIcon = "";
 
   inputValues = {};
 
@@ -24,6 +25,12 @@ export class PsCommandComponent implements OnChanges {
       this.updateText();
     }else{
       this.commandText = this.command.command;
+    }
+
+    if(this.command.safety === CommandSafety.Warning) {
+      this.safetyIcon = "mif-notification orange-text"
+    }else if(this.command.safety === CommandSafety.Danger) {
+      this.safetyIcon = "mif-warning red";
     }
   }
 

@@ -1,6 +1,5 @@
 @import "src/vars.scss";
 
-
 .command-name {
   padding: 5px 0px;
   color: $detail-pane-sub-title-color;
@@ -18,7 +17,6 @@
   border-radius: 5px;
 }
 
-
 .styled-input {
   padding: 3px 6px;
   border: $input-border-color 1px solid;
@@ -34,10 +32,9 @@
 
 h3 {
   font-size: 12pt;
-  margin-top: 10px ;
+  margin-top: 10px;
   padding-bottom: 10px;
 }
-
 
 label {
   margin: 0px;
@@ -51,4 +48,14 @@ $linkout-size: 30px;
   padding: 5px;
   width: $linkout-size;
   height: $linkout-size;
+}
+
+.text-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.larger-icon {
+  font-size: 16px;
 }
