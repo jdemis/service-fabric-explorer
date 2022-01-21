@@ -128,6 +128,8 @@ export class ClusterManifest extends DataModelBase<IRawClusterManifest> {
     public isBackupRestoreEnabled = false;
     public isRepairManagerEnabled = false;
     public isEventStoreEnabled = false;
+    public isAADCluster = false;
+
     public constructor(data: DataService) {
         super(data);
     }
@@ -145,6 +147,17 @@ export class ClusterManifest extends DataModelBase<IRawClusterManifest> {
                 break;
             }
         }
+    }
+
+    private parseSecurityConfiguration(element: Element) {
+      const params = element.getElementsByTagName('Parameter');
+      for (let i = 0; i < params.length; i ++) {
+          const item = params.item(i);
+          if (item.getAttribute('Name') === 'AADClientApplication'){
+              this.imageStoreConnectionString = item.getAttribute('Value');
+              break;
+          }
+      }
     }
 
     protected updateInternal(): Observable<any> | void {
@@ -170,6 +183,8 @@ export class ClusterManifest extends DataModelBase<IRawClusterManifest> {
                 this.isRepairManagerEnabled = true;
             }else if (item.getAttribute('Name') === 'EventStoreService'){
                 this.isEventStoreEnabled = true;
+            }else if (item.getAttribute('Name') === 'Security'){
+                this.parseSecurityConfiguration(item);
             }
         }
     }

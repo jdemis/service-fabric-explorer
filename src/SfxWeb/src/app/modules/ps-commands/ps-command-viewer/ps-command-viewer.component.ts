@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommandHandler, ICommand } from 'src/app/Models/powershellCommands/command';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-ps-command-viewer',
@@ -17,9 +18,12 @@ export class PsCommandViewerComponent implements OnInit {
     link: 'https://docs.microsoft.com/en-us/powershell/module/servicefabric/connect-servicefabriccluster'
   }
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.getClusterManifest().subscribe(manifest => {
+
+    })
   }
 
   trackByFn(index, command: ICommand) {
